@@ -1,7 +1,11 @@
-$navbar-default-bg: #666666;
+$navbar-default-bg: #5f819f;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+body {
+  font-family: "Trebuchet MS";
+}
 
 #logo {
   float: left;
@@ -74,7 +78,7 @@ footer ul li {
   margin-left: 15px;
 }
 
-.post-actions {
+.book-actions {
   border-top: 1px solid #eaeaea;
   padding-top: 5px;
 }
@@ -83,12 +87,12 @@ footer ul li {
   margin-top: 0;
 }
 
-.post-title {
+.book-title {
   font-weight: bold;
   font-size: 1.5em;
 }
 
-.post-body {
+.book-body {
   border-top: 1px solid #eaeaea;
   padding-top: 15px;
   padding-bottom: 15px;
@@ -98,7 +102,7 @@ footer ul li {
   margin: 30px 0 30px 0;
 }
 
-.post-meta-details {
+.book-meta-details {
   border-top: 1px solid #eaeaea;
   margin-top: 15px;
 }
@@ -117,4 +121,67 @@ footer ul li {
 
 .input_checkbox input {
   width: auto !important;
+}
+
+.radio {
+  margin-left: 20px;
+}
+
+.radio_label {
+  display: inline-block;
+  // color: blue;
+  font-family: fantasy;
+  font-size: 180%;
+  margin-left: -5px;
+  margin-right: 60px;
+}
+
+.book-info {
+  font-size: 120%;
+  font-style: oblique;
+}
+
+.book-details {
+  font-size: 120%;
+  color: darkblue;
+}
+
+.well {
+  background-color: #d8e5f1;
+}
+
+#description-detail {
+  color: darkblue;
+}
+
+.panel-body {
+  font-size: 120%;
+}
+
+.panel-title {
+  font-size: 150%;
+  font-family: "Comic Sans MS";
+  font-weight: bold;
+  color: darkblue;
+}
+
+#user_show {
+  background-image: asset-url('3.jpg');
+  background-size: cover;
+}
+
+#book_show {
+  background-image: asset-url('7.jpg');
+  background-size: cover;
+}
+
+.user_list {
+  font-size: 180%;
+  font-family: fantasy;
+  color:darkblue;
+}
+
+.page_title {
+  // font-family: fantasy;
+  color: darkblue;
 }

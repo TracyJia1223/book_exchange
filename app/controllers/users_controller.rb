@@ -3,7 +3,7 @@ class UsersController < ApplicationController
 
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
-  before_action :require_admin, only: [:destroy]
+  # before_action :require_admin, only: [:destroy]
 
   def new
     @user = User.new
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
-      flash[:success] = "Welcome to the blog #{@user.username}"
+      flash[:success] = "Welcome to the blog #{@user.first_name}"
       redirect_to user_path(@user)
     else
       render 'new'
@@ -26,18 +26,20 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = 'You account was updated successfully!'
-      redirect_to posts_path
+      redirect_to books_path
     else
       render 'edit'
     end
   end
 
   def show
-    @user_posts = @user.posts.paginate(page: params[:page], per_page: 5)
+    # @user.owned_books
+    # @user_books = @user.books.paginate(page: params[:page], per_page: 5)
   end
 
   def index
-    @users = User.paginate(page: params[:page], per_page: 5)
+    @users = User.all
+    #paginate(page: params[:page], per_page: 5)
   end
 
   private

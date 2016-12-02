@@ -3,8 +3,8 @@ class User < ApplicationRecord
   has_many :booklists, dependent: :destroy
   has_many :owned_books, through: :booklists, source: :book
 
-  has_many :booklists, dependent: :destroy
-  has_many :required_books, through: :wishlists, source: :book
+  has_many :wishlists, dependent: :destroy
+  has_many :wished_books, through: :wishlists, source: :book
 
 
   before_save { self.email = email.downcase }
@@ -22,4 +22,17 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
 
   has_secure_password
+
+  def own_for(user)
+    booklists.find_by(user: user)
+  end
+
+  def wish_for(user)
+    wishlists.find_by(user: user)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}".strip.squeeze(' ').titleize
+  end
+  
 end
