@@ -2,18 +2,16 @@
   <div class="row">
     <div class="row-xs-8">
       <div class="well well-lg">
-        <div class="book-title">
+        <div class="book_title">
           <%= link_to b.title, book_path(b) %>
         </div>
         <div>
           <strong>Author:</strong> <%= b.author %>
         </div>
-        <div>
-        </div>
         <div class="book-body">
           <%= truncate(b.description, length:80) %>
         </div>
-        <% if logged_in? %>
+        <% if logged_in? && @user == current_user %>
           <div class="book-actions">
             <%= link_to 'Edit', edit_book_path(b), class: "btn btn-xs btn-primary" %>
             <%= link_to 'Delete', book_path(b),

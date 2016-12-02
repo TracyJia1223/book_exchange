@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   get '/' => 'home#index', as: :root
 
   get '/signup' => 'users#new'
+  get '/addtobooklist/:id' => 'books#add_to_booklist', as: :add_to_booklist
+  get 'addtowishlist/:id' => 'books#add_to_wishlist', as: :add_to_wishlist
   resources :users, except: [:new]
 
-  resources :books, shallow: true do 
+  resources :books, shallow: true do
     resources :wishlists, only: [:create, :destroy]
     resources :booklists, only: [:create, :destroy]
   end

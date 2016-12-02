@@ -1,8 +1,7 @@
 <div id="book_show">
   <br>
-  <br>
-  <h2 align="center"><%= @book.title %></h2>
-  <br>
+  <h2 align="center" class="book_show_title"><%= @book.title %></h2>
+  <br><br><br><br><br><br><br>
   <div class="well col-xs-8 col-xs-offset-2">
       <ul class="listing">
         <div class="row">
@@ -20,11 +19,14 @@
       <%# link_to image_tag(@book.image.url(:large)), @book.image.url, target: '_blank' %>
     <%# end %>
     <div class="book-actions">
-      <% if logged_in? %>
+      <% if logged_in? && false %>
         <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-xs btn-primary" %>
         <%= link_to 'Delete', book_path(@book),
                           method: :delete,
                           data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger" %>
+      <% else %>
+        <%= link_to 'Add to your book list', add_to_booklist_path(@book), class: "btn btn-xs btn-primary" %>
+        <%= link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "btn btn-xs btn-primary" %>
       <% end %>
       <%= link_to 'View all', books_path, class: "btn btn-xs btn-success" %>
     </div>
@@ -42,17 +44,11 @@
         </div>
         <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
           <div class="panel-body">
-            <%# if @book_owners.count < 1 %>
-              <%#Sorry, we counld not find a match %>
-            <%# else %>
-              <% if @book_owners.count == 0 %>
-                Sorry, we counld not find a match
-              <% else %>
-
+            <% if @book_owners.count == 0 %>
+              Sorry, we counld not find a match
+            <% else %>
               <% @book_owners.each do |owner| %>
-                <%# if (owner != current_user) %>
-                  <li><%= link_to owner.full_name, user_path(owner) %></li>
-                <%# end %>
+                <li><%= link_to owner.full_name, user_path(owner) %></li>
               <% end %>
             <% end %>
           </div>

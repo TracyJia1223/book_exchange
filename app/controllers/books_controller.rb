@@ -1,6 +1,6 @@
 class BooksController < ApplicationController
   # BOOKS_PER_PAGE = 5
-  before_action :find_book, only: [:edit, :update, :destroy, :show]
+  before_action :find_book, only: [:edit, :update, :destroy, :show, :add_to_booklist, :add_to_wishlist]
   before_action :require_user, except: [:index, :show]
   # before_action :require_same_user, only: [:edit, :update, :destroy]
 
@@ -27,16 +27,8 @@ class BooksController < ApplicationController
   end
 
   def show
-    # @book_owners = []
-    # Book.own_for(@book.title).each do |book|
-    #   if book.choose_list=='booklist'
-    #     book.owners.each do |owner|
-    #       @book_owners.push(owner)
-    #     end
-    #   end
-    # end
     @book_owners = Book.own_for(@book.title)
-    @ownership = Booklist.search_for_user(@book, current_user)
+    # @ownership = Booklist.search_for_user(@book, current_user)
 
     # @comment = Comment.new
     # @like = @book.like_for(current_user)
@@ -68,7 +60,20 @@ class BooksController < ApplicationController
   def destroy
     @book.destroy
     flash[:danger] = 'Book was successfully deleted!'
-    redirect_to books_path
+    redirect_to user_path(current_user)
+  end
+
+
+  def add_to_wishlist
+    Wishlist.create(book: @book, user: current_user)
+    flash[:success] = 'book was successfully added to your Wish List!'
+    redirect_to user_path(current_user)
+  end
+
+  def add_to_booklist
+    Booklist.create(book: @book, user: current_user)
+    flash[:success] = 'book was successfully added to your Book List!'
+    redirect_to user_path(current_user)
   end
 
   private

@@ -154,6 +154,10 @@ footer ul li {
   color: darkblue;
 }
 
+.panel-default >.panel-heading {
+    background-color: #d8e5f1;
+}
+
 .panel-body {
   font-size: 120%;
 }
@@ -161,27 +165,44 @@ footer ul li {
 .panel-title {
   font-size: 150%;
   font-family: "Comic Sans MS";
-  font-weight: bold;
   color: darkblue;
 }
 
 #user_show {
-  background-image: asset-url('3.jpg');
-  background-size: cover;
+  background-image: asset-url('10.jpg');
+  background-size: 100% 120%;
+  background-repeat: no-repeat;
 }
 
 #book_show {
-  background-image: asset-url('7.jpg');
-  background-size: cover;
+  background-image: asset-url('12.jpg');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 .user_list {
-  font-size: 180%;
+  font-size: 220%;
   font-family: fantasy;
   color:darkblue;
+  font-weight: bold;
 }
 
 .page_title {
   // font-family: fantasy;
   color: darkblue;
+}
+
+.book_title {
+  color: darkblue;
+  font-family: fantasy;
+  font-size: 120%;
+  font-weight: bold;
+}
+
+.book_show_title {
+  font-weight: bold;
+  color: darkblue;
+  font-family: fantasy;
+  font-size: 300%;
+  margin-top: 4px;
 }

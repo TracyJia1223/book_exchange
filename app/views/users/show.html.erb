@@ -1,7 +1,7 @@
 <br>
 <div id="user_show">
   <br>
-  <h1 align="center" class="page_title">Welcome to <%= @user.first_name %>'s page</h1>
+  <!-- <h1 align="center" class="page_title">Welcome to <%= @user.first_name %>'s page</h1> -->
   <br>
   <div class="row">
     <div class="col-md-4 col-md-offset-4 center">
@@ -12,7 +12,7 @@
   <div class="row">
     <div class="col-sm-4 col-sm-offset-1">
       <h4 align="center" class="user_list"><%= @user.first_name %>'s Wish List</h4>
-        <%= render 'books/book', obj: @user.wished_books %>
+        <%= render partial: 'books/book', locals: {obj: @user.wished_books } %>
     </div>
     <div class="col-sm-4 col-sm-offset-2">
       <h4 align="center" class="user_list"><%= @user.first_name %>'s Book List</h4>
