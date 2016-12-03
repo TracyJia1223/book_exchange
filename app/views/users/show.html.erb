@@ -11,11 +11,11 @@
   <br>
   <div class="row">
     <div class="col-sm-4 col-sm-offset-1">
-      <h4 align="center" class="user_list"><%= @user.first_name %>'s Wish List</h4>
+      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @user.first_name %>'s Wish List</h4>
         <%= render partial: 'books/book', locals: {obj: @user.wished_books } %>
     </div>
     <div class="col-sm-4 col-sm-offset-2">
-      <h4 align="center" class="user_list"><%= @user.first_name %>'s Book List</h4>
+      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= @user.first_name %>'s Book List</h4>
         <%= render 'books/book', obj: @user.owned_books %>
     </div>
   </div>

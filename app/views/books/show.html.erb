@@ -25,10 +25,14 @@
                           method: :delete,
                           data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger" %>
       <% else %>
-        <%= link_to 'Add to your book list', add_to_booklist_path(@book), class: "btn btn-xs btn-primary" %>
-        <%= link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "btn btn-xs btn-primary" %>
+        <button type="button" class="btn btn-info btn-md">
+          <span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= link_to 'Add to your book list', add_to_booklist_path(@book), class: "info_tag" %>
+        </button>
+        <button type="button" class="btn btn-info btn-md">
+          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "info_tag" %>
+        </button>
       <% end %>
-      <%= link_to 'View all', books_path, class: "btn btn-xs btn-success" %>
+      <%# link_to 'View all', books_path, class: "btn btn-md btn-success" %>
     </div>
   </div>
 
@@ -38,7 +42,7 @@
         <div class="panel-heading" role="tab" id="headingOne">
           <h4 class="panel-title">
             <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              Who has this book?
+              <div class="glyphicon glyphicon-hand-down" style="color:darkblue"> <span id="panel_title"> Who has this book? </span> </div>
             </a>
           </h4>
         </div>

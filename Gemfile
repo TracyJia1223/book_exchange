@@ -53,6 +53,7 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'bootstrap-will_paginate'
 gem 'bootstrap-sass', '~> 3.3.5'
 gem "byebug"
+gem 'owlcarousel-rails'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

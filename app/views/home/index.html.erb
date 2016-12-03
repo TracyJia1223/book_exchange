@@ -1,0 +1,10 @@
+<br>
+<div class="owl-carousel">
+  <div class="interested_book">You May Be Interested: </div>
+  <% Book.all.each do |book| %>
+    <div class="glyphicon glyphicon-tags" style="color:#63bbbe"><%= link_to book.title, book_path(book), class: "interested_book" %></div>
+  <% end %>
+</div>
+<br>
+<% images = ['1.jpg', '2.jpg'] %>
+<%= carousel_for(images) %>

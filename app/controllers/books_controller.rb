@@ -14,11 +14,9 @@ class BooksController < ApplicationController
     if @book.save
       @user = current_user
       if list == 'wishlist'
-        Wishlist.create(book: @book, user: current_user)
-        flash[:success] = 'book was successfully added to your Wish List!'
+        add_to_wish_list
       elsif list == 'booklist'
-        Booklist.create(book: @book, user: current_user)
-        flash[:success] = 'book was successfully added to your Book List!'
+        add_to_book_list
       end
       redirect_to book_path(@book)
     else
@@ -65,14 +63,12 @@ class BooksController < ApplicationController
 
 
   def add_to_wishlist
-    Wishlist.create(book: @book, user: current_user)
-    flash[:success] = 'book was successfully added to your Wish List!'
+    add_to_wish_list
     redirect_to user_path(current_user)
   end
 
   def add_to_booklist
-    Booklist.create(book: @book, user: current_user)
-    flash[:success] = 'book was successfully added to your Book List!'
+    add_to_book_list
     redirect_to user_path(current_user)
   end
 
@@ -84,6 +80,16 @@ class BooksController < ApplicationController
 
   def find_book
     @book = Book.find(params[:id])
+  end
+
+  def add_to_book_list
+    Booklist.create(book: @book, user: current_user)
+    flash[:success] = 'book was successfully added to your Book List!'
+  end
+
+  def add_to_wish_list
+    Wishlist.create(book: @book, user: current_user)
+    flash[:success] = 'book was successfully added to your Wish List!'
   end
 
   def require_same_user
