@@ -1,8 +1,8 @@
 <br>
 <div class="owl-carousel">
-  <div class="interested_book">You May Be Interested: </div>
-  <% Book.all.each do |book| %>
-    <div class="glyphicon glyphicon-tags" style="color:#63bbbe"><%= link_to book.title, book_path(book), class: "interested_book" %></div>
+  <div class="interested_book">All Genres: </div>
+  <% Genre.all.each do |genre| %>
+    <li><div class="glyphicon glyphicon-tags" style="color:#63bbbe"><span class="genre_img"><%= link_to "#{genre.name}", genre_path(genre), class: "interested_book " %></span></li>
   <% end %>
 </div>
 <br>

@@ -1,0 +1,11 @@
+<div id="genre_show">
+<div class="row">
+  <h1 align="center"><%= "Genre: " + @genre.name %></h1>
+  <div class="col-md-8 col-md-offset-2">
+    <%= render 'books/book', obj: @genre_books %>
+  </div>
+  <div align="center">
+    <%= will_paginate @genre_books %>
+  </div>
+</div>
+</div>

@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col-xs-12">
-    <%= form_for(@book, html: { class: "form-horizontal", role: "form"}) do |f| %>
+    <%= form_for(@book, html: { multipart: true, class: "form-horizontal", role: "form"}) do |f| %>
       <div class = "form-group">
         <div class="control-label col-sm-2">
           <%= f.label :title %>
@@ -31,8 +31,16 @@
         <div class="control-label col-sm-2">
           <%= f.label :weight %>
         </div>
-        <div class="col-sm-4">
+        <div class="col-sm-2">
           <%= f.number_field :weight, class: "form-control", step:0.01, placeholder: "Weight of book", autofocus: true %>
+        </div>
+        <div class="col-sm-2">
+          <%= f.radio_button :unit, 'lbs', :checked => true, class: "unit_button" %>
+          <%= f.label :choose_list, 'lbs', :value => 'lbs', class: "unit_label" %>
+          <%= f.radio_button :unit, 'g', class: "unit_button" %>
+          <%= f.label :unit, 'g', :value => 'g', class: "unit_label" %>
+          <%= f.radio_button :unit, 'kg', class: "unit_button" %>
+          <%= f.label :unit, 'kg', :value => 'kg', class: "unit_label" %>
         </div>
       </div>
       <div class = "form-group">
@@ -43,15 +51,15 @@
           <%= f.text_area :description, rows: 10, class: "form-control", placeholder: "Description of book" %>
         </div>
       </div>
-      <!-- <div class="form-group">
+      <div class="form-group">
         <div class="row">
           <div class="col-sm-offset-2 col-sm-8">
-            <%# f.collection_check_boxes :category_ids, Category.all, :id, :name do |cb| %>
-            <%# cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
-            <%# end %>
+            <%= f.collection_check_boxes :genre_ids, Genre.all, :id, :name do |cb| %>
+            <% cb.label(class: "checkbox-inline input_checkbox") {cb.check_box(class: "checkbox") + cb.text} %>
+            <% end %>
           </div>
         </div>
-      </div> -->
+      </div>
       <div class="form-group">
         <div class="control-label col-sm-2">
           <%= f.label :image %>
@@ -66,9 +74,9 @@
         </div>
         <div class="col-sm-8 radio">
           <%= f.radio_button :choose_list, 'booklist', :checked => true, class: "radio_button" %>
-          <%= label :choose_list, 'Book List', :value => 'booklist', class: "radio_label" %>
+          <%= f.label :choose_list, 'Book List', :value => 'booklist', class: "radio_label" %>
           <%= f.radio_button :choose_list, 'wishlist', class: "radio_button" %>
-          <%= label :choose_list, 'Wish List', :value => 'wishlist', class: "radio_label" %>
+          <%= f.label :choose_list, 'Wish List', :value => 'wishlist', class: "radio_label" %>
         </div>
       </div>
       <div class = "form-group">

@@ -1,37 +1,28 @@
 <br>
-<div id="user_show">
-  <br>
-  <!-- <h1 align="center" class="page_title">Welcome to <%= @user.first_name %>'s page</h1> -->
-  <br>
-  <div class="row">
-    <div class="col-md-4 col-md-offset-4 center">
-      <%# gravatar_for @user, size: 150%>
-    </div>
-  </div>
-  <br>
-  <div class="row">
-    <div class="col-sm-4 col-sm-offset-1">
-      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @user.first_name %>'s Wish List</h4>
-        <%= render partial: 'books/book', locals: {obj: @user.wished_books } %>
-    </div>
-    <div class="col-sm-4 col-sm-offset-2">
-      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= @user.first_name %>'s Book List</h4>
-        <%= render 'books/book', obj: @user.owned_books %>
-    </div>
-  </div>
-  <div class="center">
-    <%# will_paginate @user_posts %>
-  </div>
-  <%# render 'books/book', obj: @user_books %>
-  <div class="center">
-    <%# will_paginate @user_books %>
+<div class="row">
+  <div class="col-md-4 col-md-offset-4 center">
+    <% if @user.image.present? %>
+      <%= image_tag @user.image.thumb.url, class: "img-circle" %>
+    <% end %>
   </div>
 </div>
-
-
-<%# wishlists = Wishlist.where(book: somebook) %>
-
-
-<%# wishlists.each |wishlist| do %>
-  <%# wishlist.user %>
-<%# end %>
+<br>
+<div id="user_show">
+  <br><br><br>
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-1">
+      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @user.first_name %>'s Wish List</h4><br>
+      <%= render partial: 'books/book', locals: {obj: @user_wished_books } %>
+      <div class="center">
+        <%= will_paginate @user_wished_books %>
+      </div>
+    </div>
+    <div class="col-sm-4 col-sm-offset-2">
+      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= @user.first_name %>'s Book List</h4><br>
+      <%= render 'books/book', obj: @user_owned_books %>
+      <div class="center">
+        <%= will_paginate @user_owned_books %>
+      </div>
+    </div>
+  </div>
+</div>

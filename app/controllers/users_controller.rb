@@ -26,20 +26,19 @@ class UsersController < ApplicationController
   def update
     if @user.update(user_params)
       flash[:success] = 'You account was updated successfully!'
-      redirect_to books_path
+      redirect_to user_path(@user)
     else
       render 'edit'
     end
   end
 
   def show
-    # @user.owned_books
-    # @user_books = @user.books.paginate(page: params[:page], per_page: 5)
+    @user_wished_books = @user.wished_books.order(created_at: :desc).paginate(page: params[:page], per_page: 3)
+    @user_owned_books = @user.owned_books.order(created_at: :desc).paginate(page: params[:page], per_page: 3)
   end
 
   def index
-    @users = User.all
-    #paginate(page: params[:page], per_page: 5)
+    @users = User.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
   private

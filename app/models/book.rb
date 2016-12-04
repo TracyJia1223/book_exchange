@@ -5,8 +5,13 @@ class Book < ApplicationRecord
   has_many :wishlists, dependent: :nullify
   has_many :hunters, through: :wishlists, source: :user
 
+  has_many :book_genres, dependent: :nullify
+  has_many :genres, through: :book_genres, source: :genre
+
   validates :title, presence: true
   validates :choose_list, presence: true
+
+  mount_uploader :image, ImageUploader
 
   def self.own_for(title)
     book_owners = []
@@ -19,9 +24,5 @@ class Book < ApplicationRecord
     end
     return book_owners
   end
-
-  # def wish_for(title)
-  #   wishlists.find_by(user: title)
-  # end
-
+  
 end

@@ -1,5 +1,4 @@
 class BooksController < ApplicationController
-  # BOOKS_PER_PAGE = 5
   before_action :find_book, only: [:edit, :update, :destroy, :show, :add_to_booklist, :add_to_wishlist]
   before_action :require_user, except: [:index, :show]
   # before_action :require_same_user, only: [:edit, :update, :destroy]
@@ -37,9 +36,7 @@ class BooksController < ApplicationController
     #   @books = Book.search(params[:search]).order(created_at: :desc)
     #   # .paginate(page: params[:page], per_page: BOOKS_PER_PAGE)
     # else
-      @books = Book.order(created_at: :desc)
-      # .paginate(page: params[:page], per_page: BOOKS_PER_PAGE)
-      # .page(params[:page]).per(BOOKS_PER_PAGE)
+      @books = Book.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
   end
 
   def edit
@@ -75,7 +72,7 @@ class BooksController < ApplicationController
   private
 
   def book_params
-    params.require(:book).permit(:title, :author, :publisher, :weight, :description, :image, :choose_list)
+    params.require(:book).permit(:title, :author, :publisher, :weight, :description, :image, :choose_list, :unit, genre_ids: [])
   end
 
   def find_book

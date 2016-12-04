@@ -22,6 +22,7 @@ class User < ApplicationRecord
                     format: { with: VALID_EMAIL_REGEX }
 
   has_secure_password
+  mount_uploader :image, ImageUploader
 
   def own_for(user)
     booklists.find_by(user: user)
@@ -34,5 +35,5 @@ class User < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}".strip.squeeze(' ').titleize
   end
-  
+
 end

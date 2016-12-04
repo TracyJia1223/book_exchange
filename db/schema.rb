@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161128073240) do
+ActiveRecord::Schema.define(version: 20161204091726) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "book_genres", force: :cascade do |t|
+    t.integer  "genre_id"
+    t.integer  "book_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["book_id"], name: "index_book_genres_on_book_id", using: :btree
+    t.index ["genre_id"], name: "index_book_genres_on_genre_id", using: :btree
+  end
 
   create_table "booklists", force: :cascade do |t|
     t.integer  "user_id"
@@ -34,6 +43,13 @@ ActiveRecord::Schema.define(version: 20161128073240) do
     t.datetime "updated_at",  null: false
     t.string   "image"
     t.string   "choose_list"
+    t.string   "unit"
+  end
+
+  create_table "genres", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -55,6 +71,8 @@ ActiveRecord::Schema.define(version: 20161128073240) do
     t.index ["user_id"], name: "index_wishlists_on_user_id", using: :btree
   end
 
+  add_foreign_key "book_genres", "books"
+  add_foreign_key "book_genres", "genres"
   add_foreign_key "booklists", "books"
   add_foreign_key "booklists", "users"
   add_foreign_key "wishlists", "books"

@@ -7,10 +7,11 @@ Rails.application.routes.draw do
   get '/addtobooklist/:id' => 'books#add_to_booklist', as: :add_to_booklist
   get 'addtowishlist/:id' => 'books#add_to_wishlist', as: :add_to_wishlist
   resources :users, except: [:new]
+  resources :genres, except: [:destroy]
 
   resources :books, shallow: true do
     resources :wishlists, only: [:create, :destroy]
-    resources :booklists, only: [:create, :destroy]
+    resources :booklists, only: [:create, :destroy]    
   end
 
   get '/login' => 'sessions#new'

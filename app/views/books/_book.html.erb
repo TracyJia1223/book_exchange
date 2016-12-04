@@ -1,7 +1,7 @@
 <% obj.each do |b| %>
   <div class="row">
     <div class="row-xs-8">
-      <div class="well well-lg">
+      <div class="well well-lg borderimg">
         <div class="book_title">
           <%= link_to b.title, book_path(b) %>
         </div>
@@ -11,6 +11,9 @@
         <div class="book-body">
           <%= truncate(b.description, length:80) %>
         </div>
+        <% if b.genres.any? %>
+          <strong>Genres:</strong> <%= render b.genres %>
+        <% end %>
         <% if logged_in? && @user == current_user %>
           <div class="book-actions">
             <button type="button" class="btn btn-info btn-xs">

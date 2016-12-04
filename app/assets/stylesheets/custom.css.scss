@@ -8,6 +8,10 @@ body {
   // background-color: #dddddd;
 }
 
+li {
+  list-style: none;
+}
+
 #logo {
   float: left;
   font-size: 1.7em;
@@ -140,6 +144,10 @@ footer ul li {
   margin-right: 60px;
 }
 
+.unit_label {
+  margin: 5px 15px 0 3px;
+}
+
 .book-info {
   font-size: 120%;
   font-style: oblique;
@@ -185,7 +193,8 @@ footer ul li {
 }
 
 .book_new {
-  background-image: asset-url('14.jpg');
+  background-image: asset-url('18.jpg');
+  background-size: 1180px 850px;
 }
 
 .user_new {
@@ -220,9 +229,9 @@ footer ul li {
 }
 
 .interested_book {
-  font-size: 200%;
+  font-size: 220%;
   font-family: fantasy;
-  color: darkblue;
+  color: #8d8484;
   font-weight: bold;
   text-shadow: 2px 2px 5px white;
   margin: 2px;
@@ -230,4 +239,27 @@ footer ul li {
 
 .info_tag {
   color: white;
+}
+
+.borderimg {
+  border: 10px solid transparent;
+  border-image: url(border-1.jpg) 30 round;
+}
+
+.genre_img {
+  background-image: asset-url('b6.jpg');
+  background-size: cover;
+  margin-left: 12px;
+}
+
+#genre_index {
+  background-image: asset-url('13.png');
+  background-size: 900px 850px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+#genre_show {
+  background-image: asset-url('4.JPG');
+  background-size: cover;
 }

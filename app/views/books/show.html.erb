@@ -8,16 +8,27 @@
           <div class="col-md-8">
             <li><strong class="book-info">Author:</strong> <span class="book-details"><%= @book.author %></span></li>
             <li><strong class="book-info">Publisher:</strong> <span class="book-details"><%= @book.publisher %></span></li>
-            <li><strong class="book-info">Weight:</strong> <span class="book-details"><%= @book.weight %></span>kg</li>
+            <li><strong class="book-info">Weight:</strong> <span class="book-details"><%= @book.weight %></span><strong class="book-info"><%= @book.unit %></strong>
+            </li>
+            <% if @book.genres.any? %>
+              <li><strong class="book-info">Genres:</strong> <%= render @book.genres %>
+            <% end %></li>
           </div>
         </div>
       </ul>
     <hr>
-    <h4 class="description"><strong>Description:</strong></h4>
+    <h4 class="description">
+      <strong>Description:</strong>
+    </h4>
+
     <span id="description-detail"><%= simple_format(@book.description) %></span>
-    <%# if @book.image_file_size %>
-      <%# link_to image_tag(@book.image.url(:large)), @book.image.url, target: '_blank' %>
-    <%# end %>
+    <br>
+    <div>
+      <% if @book.image.present? %>
+        <%= image_tag @book.image.large.url %>
+      <% end %>
+    </div>
+    <br>
     <div class="book-actions">
       <% if logged_in? && false %>
         <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-xs btn-primary" %>
