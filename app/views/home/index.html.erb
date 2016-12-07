@@ -1,10 +1,77 @@
 <br>
-<div class="owl-carousel">
-  <div class="interested_book">All Genres: </div>
-  <% Genre.all.each do |genre| %>
-    <li><div class="glyphicon glyphicon-tags" style="color:#63bbbe"><span class="genre_img"><%= link_to "#{genre.name}", genre_path(genre), class: "interested_book " %></span></li>
-  <% end %>
+<div class="row">
+  <div class="owl-carousel">
+    <div class="interested_book">All Genres: </div>
+    <% Genre.all.each do |genre| %>
+      <li><div class="glyphicon glyphicon-tags" style="color:#63bbbe"><span class="genre_img"><%= link_to "#{genre.name}", genre_path(genre), class: "interested_book " %></span></li>
+    <% end %>
+  </div>
+  <% images = ['1.jpg', '2.jpg'] %>
+  <%# carousel_for(images) %>
 </div>
-<br>
-<% images = ['1.jpg', '2.jpg'] %>
-<%= carousel_for(images) %>
+
+<div class="row">
+  <div id='book'>
+    <div id='top'></div>
+    <div id='front'></div>
+    <div id='right'></div>
+    <div id='bottom'></div>
+    <div id='shadow'></div>
+    <div id='bookmark'>
+      <div>
+        <div>
+          <div>
+            <div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='bookmark-shadow'></div>
+  </div>
+  <div id='flip'>
+    <div id='front'>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id='back'>
+      <div>
+        <div>
+          <div>
+            <div>
+              <div>
+                <div>
+                  <div>
+                    <div>
+                      <div>
+                        <div></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src='http://codepen.io/fbrz/pen/9a3e4ee2ef6dfd479ad33a2c85146fc1.js'></script>
+`
