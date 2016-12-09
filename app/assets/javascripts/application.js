@@ -15,5 +15,8 @@
 //  require turbolinks
 //  require jquery.turbolinks
 //= require bootstrap-sprockets
+//= require jquery-ui
 //= require owl.carousel
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 //= require_tree .

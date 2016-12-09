@@ -4,6 +4,7 @@
     <% if @user.image.present? %>
       <%= image_tag @user.image.thumb.url, class: "img-circle" %>
     <% end %>
+    <h3 id="user_name">Hi, I am <%= @user.first_name %></h3>
   </div>
 </div>
 <br>
@@ -11,14 +12,14 @@
   <br><br><br>
   <div class="row">
     <div class="col-sm-4 col-sm-offset-1">
-      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= @user.first_name %>'s Wish List</h4><br>
+      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-heart" aria-hidden="true"></span> My Wish List</h4><br>
       <%= render partial: 'books/book', locals: {obj: @user_wished_books } %>
       <div class="center">
         <%= will_paginate @user_wished_books %>
       </div>
     </div>
     <div class="col-sm-4 col-sm-offset-2">
-      <h4 align="center" class="user_list"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= @user.first_name %>'s Book List</h4><br>
+      <h4 class="user_list"><span class="glyphicon glyphicon-book" aria-hidden="true"></span> My Book List</h4><br>
       <%= render 'books/book', obj: @user_owned_books %>
       <div class="center">
         <%= will_paginate @user_owned_books %>

@@ -28,7 +28,7 @@ class BooksController < ApplicationController
     # @ownership = Booklist.search_for_user(@book, current_user)
 
     # @comment = Comment.new
-    # @like = @book.like_for(current_user)
+    # @like = @book.like_xfor(current_user)
   end
 
   def index
@@ -36,7 +36,8 @@ class BooksController < ApplicationController
     #   @books = Book.search(params[:search]).order(created_at: :desc)
     #   # .paginate(page: params[:page], per_page: BOOKS_PER_PAGE)
     # else
-      @books = Book.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+      @books = Book.order(created_at: :desc).limit(5)
+      # .paginate(page: params[:page], per_page: 5)
   end
 
   def edit

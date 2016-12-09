@@ -1,0 +1,45 @@
+$(document).ready(function() {
+  $('.Addbooklist').click(function(){
+    var DOMAIN = 'http://localhost:3000'
+    var id = $(this).siblings('#dialogcontent').attr('book-id');
+    $.ajax({
+      type: 'get',
+      url: `${DOMAIN}/addtobooklist/${id}`
+    })
+  })
+
+  $('.Addwishlist').click(function(){
+    var DOMAIN = 'http://localhost:3000'
+    var id = $(this).siblings('#dialogcontent').attr('book-id');
+    $.ajax({
+      type: 'get',
+      url: `${DOMAIN}/addtowishlist/${id}`
+    })
+  })
+
+  $("#dialog").dialog({
+      autoOpen: false,
+      buttons: { Close: function() {$(this).dialog("close");} },
+      modal: true,
+      height: 620,
+      width: 800,
+      resizable: false,
+      closeOnEscape: false,
+      dialogClass: "myDialog",
+      draggable: true
+    });
+
+  $(".bookcover").on('click', function() {
+    var dialog = $( "#dialog" );
+    var title = $(this).attr('title');
+    dialog.title = title;
+    var description = $(this).attr('description');
+    var author = $(this).attr('author');
+    var id = $(this).attr('id');
+    dialog.dialog({title: title});
+    dialog.dialog( "open" );
+    $("#dialogauthor").text("Author: " + author)
+    $("#dialogcontent").text("Description: " + description);
+    $('#dialogcontent').attr('book-id',id)
+  })
+});

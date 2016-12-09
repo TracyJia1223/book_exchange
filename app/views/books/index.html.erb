@@ -1,0 +1,34 @@
+<div id="container-index">
+  <header>
+      <h2>Most Recent Popular Books</h2>
+      <p>Find what you like...</p>
+  </header>
+  <div class="photobanner">
+    <% @books.each_with_index do |book, index| %>
+      <% if book.image.present? %>
+        <% if index == 0 %>
+          <!-- <span data={book_id: book.id.to_json}> -->
+          <%= image_tag book.image.medium.url, class: 'first bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author %>
+        <% else %>
+          <%= image_tag book.image.medium.url, class: 'bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author %>
+        <% end %>
+      <% end %>
+  <% end %>
+  <% @books.each do |book| %>
+    <% if book.image.present? %>
+      <%= image_tag book.image.medium.url, alt: "", class: 'bookcover', id: book.id, title: book.title, description: book.description, author: book.author %>
+    <% end %>
+<% end %>
+  </div>
+</div>
+
+<div id="dialog" >
+  <div id="dialogauthor"> </div>
+  <div id="dialogcontent"> </div>
+  <button type="button" class="btn btn-primary btn-md Addbooklist">
+    <span class="glyphicon glyphicon-book" aria-hidden="true" ></span> <%# link_to 'Add to your book list', add_to_wishlist_path(@book), class: "info_tag" %>
+  </button>
+  <button type="button" class="btn btn-primary btn-md  Addbooklist">
+    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%# link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "info_tag" %>
+  </button>
+</div>
