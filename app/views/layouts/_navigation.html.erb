@@ -20,23 +20,24 @@
           <li><%=link_to "Add Book", new_book_path, id: "icon"%></li>
         <% end %>
         <li><%=link_to "Popular Books", books_path, id: "icon"%></li>
-        <li><%=link_to "Book Fans", users_path, id: "icon"%></li>
-        <!-- <li class="dropdown">
+        <li><%=link_to "Search Books", my_search_path, id: "icon"%></li>
+        <li><%=link_to "My friends", my_friends_path, id: "icon"%></li>
+        <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" id="icon">Genres <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><%# link_to "All Genres", genres_path %></li>
+            <li><%= link_to "All Genres", genres_path %></li>
               <% Genre.all.each do |genre| %>
-                <li><%# link_to "#{genre.name}", genre_path(genre) %></li>
+                <li><%= link_to "#{genre.name}", genre_path(genre) %></li>
               <% end %>
           </ul>
-        </li> -->
+        </li>
       </ul>
-      <form class="navbar-form navbar-left">
+      <!-- <form class="navbar-form navbar-left">
         <div class="form-group">
           <input type="text" class="form-control" placeholder="Search">
         </div>
         <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
-      </form>
+      </form> -->
       <ul class="nav navbar-nav navbar-right">
         <% if logged_in? %>
         <li class="dropdown">

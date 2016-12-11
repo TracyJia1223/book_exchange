@@ -18,10 +18,12 @@
             <% @book_owners.each do |owner| %>
               <li><%= link_to owner.full_name, user_path(owner) %>,
                 <%= owner.city %>
-                <span class="contactbutton"><button type="button" class="btn btn-danger btn-xs">
-                  <span class="glyphicon glyphicon-user" aria-hidden="true"><span class="danger_tag">Contact</span></span>
-                </span></span>
-                </button>
+                <span class="contactbutton">
+                  <button type="button" class="btn btn-success btn-xs">
+                    <span class="glyphicon glyphicon-user" aria-hidden="true"><span class="danger_tag">Contact</span>
+                    </span>
+                  </button>
+                </span>
               </li>
             <% end %>
           <% end %>
@@ -30,7 +32,7 @@
     </div>
   </div>
 
-  <div class="well col-xs-8 col-xs-offset-2">
+  <div class="well col-xs-8 col-xs-offset-2 book_well">
       <ul class="listing">
         <div class="row">
           <div class="col-md-8">
@@ -57,9 +59,16 @@
           <strong>Description:</strong>
         </h4>
         <div id="description-detail"><%= simple_format(@book.description) %></div>
+        <div id="button_group">
+          <button type="button" class="btn btn-info btn-md button_book_show">
+            <span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= link_to 'Add to your book list', add_to_booklist_path(@book), class: "info_tag" %>
+          </button>
+          <button type="button" class="btn btn-info btn-md button_book_show">
+            <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "info_tag" %>
+          </button>
+        </div>
       </div>
     </div>
-    <br>
     <div class="book-actions">
       <% if logged_in? && false %>
         <%= link_to 'Edit', edit_book_path(@book), class: "btn btn-xs btn-primary" %>
@@ -67,12 +76,6 @@
                           method: :delete,
                           data: {confirm: 'Are you sure?'}, class: "btn btn-xs btn-danger" %>
       <% else %>
-        <button type="button" class="btn btn-info btn-md">
-          <span class="glyphicon glyphicon-book" aria-hidden="true"></span> <%= link_to 'Add to your book list', add_to_booklist_path(@book), class: "info_tag" %>
-        </button>
-        <button type="button" class="btn btn-info btn-md">
-          <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%= link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "info_tag" %>
-        </button>
       <% end %>
       <%# link_to 'View all', books_path, class: "btn btn-md btn-success" %>
     </div>

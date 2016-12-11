@@ -2,6 +2,7 @@ $navbar-default-bg: #f7eeee;
 
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "font-awesome";
 
 body {
   font-family: "Trebuchet MS";
@@ -10,6 +11,7 @@ body {
 
 li {
   list-style: none;
+  overflow: hidden;
 }
 
 .navbar-brand,
@@ -171,6 +173,7 @@ footer ul li {
 
 #description-detail {
   color: darkblue;
+  // margin-bottom: 120px;
 }
 
 .panel {
@@ -230,6 +233,19 @@ footer ul li {
   background-size: 100%;
 }
 
+// .book_well {
+//   position: relative;
+// }
+//
+// #button_group {
+//   position: relative;
+//   bottom: 0;
+// }
+
+.button_book_show {
+  margin-bottom: 12px;
+}
+
 .book_new {
   background-image: asset-url('18.jpg');
   background-size: 1180px 850px;
@@ -279,10 +295,6 @@ footer ul li {
   color: white;
 }
 
-.borderimg {
-  // border: 10px solid transparent;
-  // border-image: url(border-1.jpg) 30 round;
-}
 
 .genre_img {
   background-image: asset-url('b6.jpg');
@@ -353,13 +365,23 @@ footer ul li {
 }
 
 .danger_tag {
-  padding: 0;
-  margin: 0;
   font-weight: bold;
 }
 
-.btn-danger {
+.contactbutton {
   float: right;
-  padding: 0;
-  margin: 0;
+}
+
+#my_friends_title, #my_books_title {
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+#search_for_friends, #search_for_books {
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+.results-block {
+  display: inline-block;
 }

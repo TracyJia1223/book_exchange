@@ -1,0 +1,46 @@
+<div id="book-lookup">
+<h3 id="search_for_books">Search for Books</h3>
+<%= form_tag search_books_path, remote: true, method: :get, id: 'book-lookup-form' do %>
+  <div class="form-group row no-padding text-center col-md-12">
+    <div class="col-md-10">
+      <%= text_field_tag :search_param,
+                         params[:search_param],
+                         placeholder: 'Book Title, Author or Publisher', autofocus: true,
+                         class: 'form-control search-box input-lg' %>
+    </div>
+    <div class="col-md-2">
+      <%= button_tag(type: :submit, class: 'btn btn-lg btn-info') do %>
+        <i class='fa fa-search'></i> Look up a book
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<%= render 'common/spinner' %>
+
+<% if @books %>
+  <% if @books.size > 0 %>
+    <h3>Search Results</h3>
+      <div id="book-lookup-results" class="well results-block col-md-10">
+        <table class="search-results-table col-md-12">
+          <tbody>
+            <% @books.each do |book| %>
+              <tr>
+                <td><strong>Title:</strong> <%= book.title %></td>
+                <td><strong>Author:</strong> <%= book.author %></td>
+                <td><strong>Publisher:</strong> <%= book.publisher %></td>
+                <td><strong>Details:</strong>
+                <%= link_to "View Book",        book_path(book),
+                class: 'btn btn-xs btn-success' %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
+    <% else %>
+      <p class="lead col-md-12">No book match this search criteria</p>
+    <% end %>
+  <% end %>
+  <div id="book-lookup-errors"></div>
+</div>

@@ -20,3 +20,43 @@
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
 //= require_tree .
+
+
+var hide_spinner = function(){
+  $('#spinner').hide();
+}
+
+var show_spinner = function(){
+  $('#spinner').show();
+}
+
+var book_lookup;
+
+book_lookup = function() {
+  $('#book-lookup-form').on('ajax:before', function(event, data, status){
+    show_spinner();
+  });
+
+  $('#book-lookup-form').on('ajax:after',    function(event, data, status){
+    hide_spinner();
+  });
+
+  $('#book-lookup-form').on('ajax:success', function(event, data, status) {
+    $('#book-lookup').replaceWith(data);
+    book_lookup();
+  });
+
+  $('#book-lookup-form').on('ajax:error', function(event, xhr, status, error){
+    hide_spinner();
+    $('#book-lookup-results').replaceWith(' ');
+    $('#book-lookup-errors').replaceWith('Book was not found.');
+  });
+
+}
+
+
+
+$(document).ready(function() {
+  $(".owl-carousel").owlCarousel();
+  book_lookup();
+});

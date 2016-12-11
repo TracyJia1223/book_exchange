@@ -24,11 +24,7 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book_owners = Book.own_for(@book.title)
-    # @ownership = Booklist.search_for_user(@book, current_user)
-
-    # @comment = Comment.new
-    # @like = @book.like_xfor(current_user)
+    @book_owners = Book.own_for(@book.title, current_user)
   end
 
   def index
@@ -57,6 +53,20 @@ class BooksController < ApplicationController
     @book.destroy
     flash[:danger] = 'Book was successfully deleted!'
     redirect_to user_path(current_user)
+  end
+
+  def my_search
+    # @books = Book.all
+  end
+
+  def search
+    @books = Book.search(params[:search_param])
+    if @books
+      render partial: "lookup"
+    else
+      render status: :not_found, nothing: true
+    end
+
   end
 
 

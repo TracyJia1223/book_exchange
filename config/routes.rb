@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'addtowishlist/:id' => 'books#add_to_wishlist', as: :add_to_wishlist
   resources :users, except: [:new]
   resources :genres, except: [:destroy]
+  resources :friendships
 
   resources :books, shallow: true do
     resources :wishlists, only: [:create, :destroy]
@@ -17,5 +18,10 @@ Rails.application.routes.draw do
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'search_books' => 'books#search'
+  get 'my_search' => 'books#my_search'
   get 'my_friends' => 'users#my_friends'
+  get 'search_friends' => 'users#search'
+  post 'add_friend' => 'users#add_friend'
+
 end

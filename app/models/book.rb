@@ -13,16 +13,41 @@ class Book < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  def self.own_for(title)
+  def self.own_for(title, current_user)
     book_owners = []
     where(title: title).each do |book|
       if book.choose_list=='booklist'
         book.owners.each do |owner|
-          book_owners.push(owner)
+          if (owner.id != current_user.id)
+            book_owners.push(owner)
+          end
         end
       end
     end
     return book_owners
   end
-  
+
+  def self.search(param)
+    return Book.none if param.blank?
+    param.strip!
+    param.downcase!
+    (title_matches(param) + author_mathches(param) + publisher_matches(param)).uniq
+  end
+
+  def self.title_matches(param)
+    matches('title', param)
+  end
+
+  def self.author_mathches(param)
+    matches('author', param)
+  end
+
+  def self.publisher_matches(param)
+    matches('publisher', param)
+  end
+
+  def self.matches(field_name, param)
+    where("lower(#{field_name}) like ?", "%#{param}%")
+  end
+
 end

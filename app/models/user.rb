@@ -6,7 +6,7 @@ class User < ApplicationRecord
   has_many :wishlists, dependent: :destroy
   has_many :wished_books, through: :wishlists, source: :book
 
-  has_many :firendships
+  has_many :friendships
   has_many :friends, through: :friendships
 
 
@@ -14,7 +14,7 @@ class User < ApplicationRecord
   validates :first_name, presence: true,
                          uniqueness: {case_sensitive: false},
                          length: { minimum: 3, maximum: 25 }
- validates :last_name, presence: true,
+  validates :last_name, presence: true,
                         uniqueness: {case_sensitive: false},
                         length: { minimum: 3, maximum: 25 }
 
@@ -37,6 +37,37 @@ class User < ApplicationRecord
 
   def full_name
     "#{first_name} #{last_name}".strip.squeeze(' ').titleize
+  end
+
+  def not_friends_with?(friend_id)
+    friendships.where(friend_id: friend_id).count < 1
+  end
+
+  def except_current_user(users)
+    users.reject {|user| user.id == self.id}
+  end
+
+  def self.search(param)
+    return User.none if param.blank?
+    param.strip!
+    param.downcase!
+    (first_name_matches(param) + last_name_mathches(param) + city_matches(param)).uniq
+  end
+
+  def self.first_name_matches(param)
+    matches('first_name', param)
+  end
+
+  def self.last_name_mathches(param)
+    matches('last_name', param)
+  end
+
+  def self.city_matches(param)
+    matches('city', param)
+  end
+
+  def self.matches(field_name, param)
+    where("lower(#{field_name}) like ?", "%#{param}%")
   end
 
 end

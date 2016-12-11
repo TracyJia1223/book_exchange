@@ -14,9 +14,9 @@
             <%= link_to user.full_name, user_path(user) %>
           </li>
           <li id="city"><%= user.city %></li>
-          <li><small>own <%= pluralize(user.owned_books.count, "book") if user.owned_books %>
+          <li><small>owns <%= pluralize(user.owned_books.count, "book") if user.owned_books %>
           </small></li>
-          <li><small>wish <%= pluralize(user.wished_books.count, "book") if user.wished_books %>
+          <li><small>wishes <%= pluralize(user.wished_books.count, "book") if user.wished_books %>
           </small></li>
         </div>
       </div>
