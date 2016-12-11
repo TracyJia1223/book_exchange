@@ -1,7 +1,35 @@
 <div id="book_show">
-  <br>
+  <br><br><br>
   <h2 align="center" class="book_show_title"><%= @book.title %></h2>
-  <br><br><br><br><br>
+  <div class="col-xs-8 col-xs-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading" role="tab" id="headingOne">
+        <h4 class="panel-title">
+          <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+            <div class="glyphicon glyphicon-hand-down" style="color:darkblue"> <span id="panel_title"> Who has this book? </span> </div>
+          </a>
+        </h4>
+      </div>
+      <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+        <div class="panel-body">
+          <% if @book_owners.count == 0 %>
+            Sorry, we counld not find a match
+          <% else %>
+            <% @book_owners.each do |owner| %>
+              <li><%= link_to owner.full_name, user_path(owner) %>,
+                <%= owner.city %>
+                <span class="contactbutton"><button type="button" class="btn btn-danger btn-xs">
+                  <span class="glyphicon glyphicon-user" aria-hidden="true"><span class="danger_tag">Contact</span></span>
+                </span></span>
+                </button>
+              </li>
+            <% end %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="well col-xs-8 col-xs-offset-2">
       <ul class="listing">
         <div class="row">
@@ -17,16 +45,19 @@
         </div>
       </ul>
     <hr>
-    <h4 class="description">
-      <strong>Description:</strong>
-    </h4>
+    <div class="row">
+      <div class="col-xs-4">
+        <% if @book.image.present? %>
+          <%= image_tag @book.image.large.url %>
+        <% end %>
+      </div>
 
-    <span id="description-detail"><%= simple_format(@book.description) %></span>
-    <br>
-    <div>
-      <% if @book.image.present? %>
-        <%= image_tag @book.image.large.url %>
-      <% end %>
+      <div class="col-xs-7 col-xs-offset-1">
+        <h4 class="description">
+          <strong>Description:</strong>
+        </h4>
+        <div id="description-detail"><%= simple_format(@book.description) %></div>
+      </div>
     </div>
     <br>
     <div class="book-actions">
@@ -48,27 +79,6 @@
   </div>
 
   <div class="row">
-    <div class="col-xs-8 col-xs-offset-2">
-      <div class="panel panel-default">
-        <div class="panel-heading" role="tab" id="headingOne">
-          <h4 class="panel-title">
-            <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-              <div class="glyphicon glyphicon-hand-down" style="color:darkblue"> <span id="panel_title"> Who has this book? </span> </div>
-            </a>
-          </h4>
-        </div>
-        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-          <div class="panel-body">
-            <% if @book_owners.count == 0 %>
-              Sorry, we counld not find a match
-            <% else %>
-              <% @book_owners.each do |owner| %>
-                <li><%= link_to owner.full_name, user_path(owner) %></li>
-              <% end %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
+
   </div>
 </div>

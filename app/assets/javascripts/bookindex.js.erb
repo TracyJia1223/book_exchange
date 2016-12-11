@@ -1,20 +1,27 @@
 $(document).ready(function() {
-  $('.Addbooklist').click(function(){
+  $('.addbooklist').click(function(){
     var DOMAIN = 'http://localhost:3000'
     var id = $(this).siblings('#dialogcontent').attr('book-id');
-    $.ajax({
-      type: 'get',
-      url: `${DOMAIN}/addtobooklist/${id}`
-    })
+    window.location.href = `${DOMAIN}/addtobooklist/${id}`
+    // $.ajax({
+    //   type: 'get',
+    //   url: `${DOMAIN}/addtobooklist/${id}`,
+    //   success: function(data) {
+    //     //  Do something after the ajax call
+    //   }
+    // })
   })
 
-  $('.Addwishlist').click(function(){
+  $('.addwishlist').click(function(){
     var DOMAIN = 'http://localhost:3000'
     var id = $(this).siblings('#dialogcontent').attr('book-id');
-    $.ajax({
-      type: 'get',
-      url: `${DOMAIN}/addtowishlist/${id}`
-    })
+    window.location.href = `${DOMAIN}/addtowishlist/${id}`
+  })
+
+  $('.contactowner').click(function(){
+    var DOMAIN = 'http://localhost:3000'
+    var id = $(this).siblings('#dialogcontent').attr('book-id');
+    window.location.href = `${DOMAIN}/books/${id}`
   })
 
   $("#dialog").dialog({
@@ -30,16 +37,20 @@ $(document).ready(function() {
     });
 
   $(".bookcover").on('click', function() {
-    var dialog = $( "#dialog" );
+    var dialog = $("#dialog");
     var title = $(this).attr('title');
     dialog.title = title;
     var description = $(this).attr('description');
     var author = $(this).attr('author');
     var id = $(this).attr('id');
+    var photo = this;
     dialog.dialog({title: title});
-    dialog.dialog( "open" );
+    dialog.dialog("open");
+
+
     $("#dialogauthor").text("Author: " + author)
     $("#dialogcontent").text("Description: " + description);
     $('#dialogcontent').attr('book-id',id)
+    $('#dialogpicture').html(photo)
   })
 });

@@ -6,6 +6,9 @@ class User < ApplicationRecord
   has_many :wishlists, dependent: :destroy
   has_many :wished_books, through: :wishlists, source: :book
 
+  has_many :firendships
+  has_many :friends, through: :friendships
+
 
   before_save { self.email = email.downcase }
   validates :first_name, presence: true,

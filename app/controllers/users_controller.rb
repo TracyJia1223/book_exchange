@@ -38,13 +38,17 @@ class UsersController < ApplicationController
   end
 
   def index
-    @users = User.order(created_at: :desc).paginate(page: params[:page], per_page: 5)
+    @users = User.order(created_at: :desc).paginate(page: params[:page], per_page: 3)
+  end
+
+  def my_friends
+
   end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :password, :image)
+    params.require(:user).permit(:first_name, :last_name, :city, :zip_code, :email, :password, :image)
   end
 
   def set_user

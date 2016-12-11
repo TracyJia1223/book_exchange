@@ -8,15 +8,15 @@
       <% if book.image.present? %>
         <% if index == 0 %>
           <!-- <span data={book_id: book.id.to_json}> -->
-          <%= image_tag book.image.medium.url, class: 'first bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author %>
+          <%= image_tag book.image.medium.url, class: 'first bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author, owners: book.owners %>
         <% else %>
-          <%= image_tag book.image.medium.url, class: 'bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author %>
+          <%= image_tag book.image.medium.url, class: 'bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author, owners: book.owners  %>
         <% end %>
       <% end %>
   <% end %>
   <% @books.each do |book| %>
     <% if book.image.present? %>
-      <%= image_tag book.image.medium.url, alt: "", class: 'bookcover', id: book.id, title: book.title, description: book.description, author: book.author %>
+      <%= image_tag book.image.medium.url, alt: "", class: 'bookcover', id: book.id, title: book.title, description: book.description, author: book.author  %>
     <% end %>
 <% end %>
   </div>
@@ -25,10 +25,16 @@
 <div id="dialog" >
   <div id="dialogauthor"> </div>
   <div id="dialogcontent"> </div>
-  <button type="button" class="btn btn-primary btn-md Addbooklist">
-    <span class="glyphicon glyphicon-book" aria-hidden="true" ></span> <%# link_to 'Add to your book list', add_to_wishlist_path(@book), class: "info_tag" %>
+  <div id="dialogpicture"> </div>
+  <div id="dialogbookowners"> </div>
+  <br>
+  <button type="button" class="btn btn-info btn-xs addbooklist">
+    <p class="glyphicon glyphicon-book" aria-hidden="true" ><span class="dialog_button"> Add to your book list</span></p>
   </button>
-  <button type="button" class="btn btn-primary btn-md  Addbooklist">
-    <span class="glyphicon glyphicon-heart" aria-hidden="true"></span> <%# link_to 'Add to your wish list', add_to_wishlist_path(@book), class: "info_tag" %>
+  <button type="button" class="btn btn-info btn-xs addwishlist">
+    <p class="glyphicon glyphicon-heart" aria-hidden="true"><span class="dialog_button"> Add to your wish list</span></p>
+  </button>
+  <button type="button" class="btn btn-info btn-xs contactowner">
+    <p class="glyphicon glyphicon-user" aria-hidden="true"><span class="dialog_button"> Contact Owner</span></p>
   </button>
 </div>

@@ -173,6 +173,11 @@ footer ul li {
   color: darkblue;
 }
 
+.panel {
+  width: 627px;
+  margin-left: -15px;
+}
+
 .panel-default >.panel-heading {
     background-color: #d8e5f1;
 }
@@ -183,7 +188,7 @@ footer ul li {
 
 #panel_title {
   font-size: 130%;
-  font-family: "Comioc Sans MS";
+  font-family: "Comic Sans MS";
   color: darkblue;
 }
 
@@ -193,8 +198,34 @@ footer ul li {
   background-repeat: no-repeat;
 }
 
+#user_name {
+  color: darkblue;
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+#user_info {
+  color: darkblue;
+}
+
+#user_index {
+  background-image: asset-url('19.jpg');
+  background-size: 100% 100%;
+}
+
+#user_index_title {
+  color: darkblue;
+  font-weight: bold;
+  font-family: fantasy;
+}
+
+#city {
+  color: darkblue;
+  font-size: 120%
+}
+
 #book_show {
-  background-image: asset-url('12.jpg');
+  background-image: asset-url('4.png');
   background-repeat: no-repeat;
   background-size: 100%;
 }
@@ -299,13 +330,13 @@ footer ul li {
 
 #dialogauthor {
   font-weight: bold;
-  font-size: 200%;
+  font-size: 150%;
   font-family: fantasy;
 }
 
 #dialogcontent {
   font-weight: bold;
-  font-size: 200%;
+  font-size: 150%;
   font-family: fantasy;
 }
 
@@ -313,4 +344,22 @@ footer ul li {
 .ui-dialog .ui-dialog-titlebar-close {
 	position: absolute;
   top:20px;
+}
+
+.dialog_button {
+  font-weight: bold;
+  font-family: "Comioc Sans MS";
+  font-size: 110%;
+}
+
+.danger_tag {
+  padding: 0;
+  margin: 0;
+  font-weight: bold;
+}
+
+.btn-danger {
+  float: right;
+  padding: 0;
+  margin: 0;
 }

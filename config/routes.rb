@@ -11,10 +11,11 @@ Rails.application.routes.draw do
 
   resources :books, shallow: true do
     resources :wishlists, only: [:create, :destroy]
-    resources :booklists, only: [:create, :destroy]    
+    resources :booklists, only: [:create, :destroy]
   end
 
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'my_friends' => 'users#my_friends'
 end
