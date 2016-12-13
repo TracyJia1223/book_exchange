@@ -15,6 +15,14 @@ Rails.application.routes.draw do
     resources :booklists, only: [:create, :destroy]
   end
 
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :reply
+    end
+  end
+
+  resources :messages, only: [:new, :create]
+
   get '/login' => 'sessions#new'
   post '/login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
@@ -23,5 +31,6 @@ Rails.application.routes.draw do
   get 'my_friends' => 'users#my_friends'
   get 'search_friends' => 'users#search'
   post 'add_friend' => 'users#add_friend'
+  # get 'conversations/:id/new' => 'conversations#new', as: :new_conversation
 
 end

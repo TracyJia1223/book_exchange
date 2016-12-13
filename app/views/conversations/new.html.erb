@@ -1,0 +1,25 @@
+<h1 class="center">New Conversation</h1>
+<div class="row">
+  <div class="col-xs-12">
+    <%= form_tag conversations_path, method: :post do %>
+      <div class="form-group">
+        <%= label_tag 'recipients', 'Choose recipients' %>
+        <%= select_tag :user_id, options_from_collection_for_select(@recipients, :id, :name), class: 'form-control' %>
+        <%# select_tag 'recipients', recipients_options, multiple: true, class: 'form-control chosen-it' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'message[subject]', 'Subject' %>
+        <%= text_field_tag :subject, nil, placeholder: 'Subject', class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= label_tag 'message[body]', 'Message' %>
+        <%= text_area_tag :body, nil, cols: 3, placeholder: 'Leave a message', class: 'form-control' %>
+      </div>
+      <%= submit_tag 'Send', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $('.chosen-it').chosen()
+</script>

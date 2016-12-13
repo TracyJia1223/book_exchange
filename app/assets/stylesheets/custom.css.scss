@@ -1,8 +1,9 @@
 $navbar-default-bg: #f7eeee;
 
+@import "font-awesome";
 @import "bootstrap-sprockets";
 @import "bootstrap";
-@import "font-awesome";
+@import 'chosen';
 
 body {
   font-family: "Trebuchet MS";
@@ -364,12 +365,17 @@ footer ul li {
   font-size: 110%;
 }
 
-.danger_tag {
+.contact_tag {
   font-weight: bold;
+  color: white;
 }
 
 .contactbutton {
   float: right;
+}
+
+.contact {
+  color: white;
 }
 
 #my_friends_title, #my_books_title {
@@ -384,4 +390,24 @@ footer ul li {
 
 .results-block {
   display: inline-block;
+}
+
+.messages {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+
+.send_message {
+  margin-left: -10px;
+}
+
+#participant_name {
+  font-family: fantasy;
+  font-weight: bold;
+}
+
+.media-body {
+  padding-left: 20px;
 }

@@ -26,6 +26,7 @@ class User < ApplicationRecord
 
   has_secure_password
   mount_uploader :image, ImageUploader
+  acts_as_messageable
 
   def own_for(user)
     booklists.find_by(user: user)
@@ -68,6 +69,14 @@ class User < ApplicationRecord
 
   def self.matches(field_name, param)
     where("lower(#{field_name}) like ?", "%#{param}%")
+  end
+
+  def name
+    "#{first_name}"
+  end
+
+  def mailboxer_email(object)
+    nil
   end
 
 end

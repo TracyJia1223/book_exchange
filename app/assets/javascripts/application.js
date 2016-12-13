@@ -14,11 +14,12 @@
 //= require jquery_ujs
 //  require turbolinks
 //  require jquery.turbolinks
-//= require bootstrap-sprockets
-//= require jquery-ui
+//= require chosen-jquery
 //= require owl.carousel
+//= require bootstrap-sprockets
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+//= require jquery-ui
 //= require_tree .
 
 
@@ -53,7 +54,6 @@ book_lookup = function() {
   });
 
 }
-
 
 
 $(document).ready(function() {
