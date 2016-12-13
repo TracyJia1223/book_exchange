@@ -29,7 +29,7 @@
           </td>
           <td>
             <%= link_to "View Profile", user_path(friend), class: "btn btn-primary btn-xs" %>
-            <%= link_to "Contact", conversation_path(friend), class: "btn btn-success btn-xs" %>
+            <%= link_to "Contact", new_message_path(to: friend.id), class: "btn btn-success btn-xs" %>
             <%= link_to 'Remove Friend',
                         friendship_path(friend),
                         :method => :delete,

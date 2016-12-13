@@ -5,7 +5,13 @@
       <%= image_tag @user.image.thumb.url, class: "img-circle" %>
     <% end %>
     <h2 id="user_name"><%= @user.first_name %></h2>
-    <span id="user_info">(<%= @user.city %>, <%= @user.zip_code %>)</span>
+    <div id="user_info">(<%= @user.city %>, <%= @user.zip_code %>)</div>
+    <span class="center">
+      <button type="button" class="btn btn-success btn-md">
+        <span class="glyphicon glyphicon-user" aria-hidden="true"> <%= link_to "Contact Me", new_message_path(to: @user.id), class: "contact_tag" %>
+        </span>
+      </button>
+    </span>
   </div>
 </div>
 <br>
