@@ -16,15 +16,18 @@
             Sorry, we counld not find a match
           <% else %>
             <% @book_owners.each do |owner| %>
-              <li><%= link_to owner.full_name, user_path(owner) %>,
-                <%= owner.city %>
-                <span class="contactbutton">
-                  <button type="button" class="btn btn-success btn-xs">
-                    <span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to "Contact", new_message_path(to: owner.id), class: "contact_tag" %>
+              <ul>
+                <li><%= link_to owner.full_name, user_path(owner) %>,
+                    <%= owner.city %>
+                    <span class="right">
+                      <button type="button" class="btn btn-success btn-xs">
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to "Contact", new_message_path(to: owner.id), class: "contact_tag" %>
+                        </span>
+                      </button>
                     </span>
-                  </button>
-                </span>
-              </li>
+                  </li>
+                </ul>
+
             <% end %>
           <% end %>
         </div>

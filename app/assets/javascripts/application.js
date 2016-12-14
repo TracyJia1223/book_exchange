@@ -19,6 +19,7 @@
 //= require bootstrap-sprockets
 //= require bootstrap-modal
 //= require bootstrap-modalmanager
+//= require bootstrap/dropdown
 //= require jquery-ui
 //= require_tree .
 

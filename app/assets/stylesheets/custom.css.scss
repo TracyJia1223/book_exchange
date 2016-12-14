@@ -12,7 +12,15 @@ body {
 
 li {
   list-style: none;
-  overflow: hidden;
+  // overflow: hidden;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
 }
 
 .navbar-brand,
@@ -370,10 +378,6 @@ footer ul li {
   color: white;
 }
 
-.contactbutton {
-  float: right;
-}
-
 .contact {
   color: white;
 }
@@ -410,4 +414,8 @@ footer ul li {
 
 .media-body {
   padding-left: 20px;
+}
+
+.ui-dialog .ui-dialog-titlebar-close {
+  top: 20%!important;
 }

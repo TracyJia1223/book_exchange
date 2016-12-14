@@ -14,7 +14,7 @@
         <div class="messages">
           <% @conversation.receipts_for(current_user).each do |receipt| %>
             <% message = receipt.message %>
-            <div class="media-left">
+            <div class="media-left center">
               <%= image_tag message.sender.image.tiny.url %>
               <%= message.sender.name %>
             </div>

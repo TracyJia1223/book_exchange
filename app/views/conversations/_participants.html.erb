@@ -2,7 +2,9 @@
   <% unless participant == current_user %>
     <h4 id="participant_name"><%= link_to participant.full_name, user_path(participant) %></h4>
     <div>
-      <%= image_tag participant.image.thumb.url, class: "img-circle" %>
+      <% if participant.image.present? %> 
+        <%= image_tag participant.image.thumb.url, class: "img-circle" %>
+      <% end %>
     </div>
   <% end %>
 <% end %>
