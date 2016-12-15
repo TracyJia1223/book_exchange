@@ -32,11 +32,11 @@ header p {
 
 .photobanner {
 	height: 233px;
-	width: 3550px;
+	width: 3000px;
 	margin-bottom: 80px;
 }
 
-/*keyframe animations*/
+/*first image keyframe animations*/
 .first {
 	-webkit-animation: bannermove 30s linear infinite;
 	   -moz-animation: bannermove 30s linear infinite;
@@ -45,9 +45,11 @@ header p {
 }
 
 @keyframes "bannermove" {
+	/*starting point*/
  0% {
     margin-left: 0px;
  }
+ 	/*stopping point*/
  100% {
     margin-left: -1000px;
  }

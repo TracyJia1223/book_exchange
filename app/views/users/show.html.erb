@@ -6,11 +6,11 @@
     <% end %>
     <h2 id="user_name"><%= @user.first_name %></h2>
     <div id="user_info">(<%= @user.city %>, <%= @user.zip_code %>)</div>
+    <br>
     <% if @user != current_user %>
       <span class="center">
-        <button type="button" class="btn btn-success btn-md">
-          <span class="glyphicon glyphicon-user" aria-hidden="true"> <%= link_to "Contact Me", new_message_path(to: @user.id), class: "contact_tag" %>
-          </span>
+        <button type="button" class="btn btn-success btn-lg">
+          <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= link_to "Contact", new_message_path(to: @user.id), class: "contact_tag" %>
         </button>
       </span>
     <% end %>

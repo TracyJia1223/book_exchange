@@ -21,8 +21,7 @@
                     <%= owner.city %>
                     <span class="right">
                       <button type="button" class="btn btn-success btn-xs">
-                        <span class="glyphicon glyphicon-user" aria-hidden="true"><%= link_to "Contact", new_message_path(to: owner.id), class: "contact_tag" %>
-                        </span>
+                        <span class="glyphicon glyphicon-user" aria-hidden="true"></span> <%= link_to "Contact", new_message_path(to: owner.id), class: "contact_tag" %>
                       </button>
                     </span>
                   </li>

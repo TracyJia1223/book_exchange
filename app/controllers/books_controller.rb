@@ -28,12 +28,7 @@ class BooksController < ApplicationController
   end
 
   def index
-    # if params[:search]
-    #   @books = Book.search(params[:search]).order(created_at: :desc)
-    #   # .paginate(page: params[:page], per_page: BOOKS_PER_PAGE)
-    # else
-      @books = Book.order(created_at: :desc).limit(5)
-      # .paginate(page: params[:page], per_page: 5)
+    @books = Book.order(created_at: :desc).limit(5)
   end
 
   def edit

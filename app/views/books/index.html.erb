@@ -6,8 +6,8 @@
   <div class="photobanner">
     <% @books.each_with_index do |book, index| %>
       <% if book.image.present? %>
+        <%# target the first image %>
         <% if index == 0 %>
-          <!-- <span data={book_id: book.id.to_json}> -->
           <%= image_tag book.image.medium.url, class: 'first bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author, owners: book.owners %>
         <% else %>
           <%= image_tag book.image.medium.url, class: 'bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author, owners: book.owners  %>
