@@ -13,12 +13,12 @@
           <%= image_tag book.image.medium.url, class: 'bookcover', alt: "", id: book.id, title: book.title, description: book.description, author: book.author, owners: book.owners  %>
         <% end %>
       <% end %>
-  <% end %>
-  <% @books.each do |book| %>
-    <% if book.image.present? %>
-      <%= image_tag book.image.medium.url, alt: "", class: 'bookcover', id: book.id, title: book.title, description: book.description, author: book.author  %>
     <% end %>
-<% end %>
+    <% @books.each do |book| %>
+      <% if book.image.present? %>
+        <%= image_tag book.image.medium.url, alt: "", class: 'bookcover', id: book.id, title: book.title, description: book.description, author: book.author  %>
+      <% end %>
+    <% end %>
   </div>
 </div>
 
